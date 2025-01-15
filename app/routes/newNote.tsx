@@ -19,7 +19,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     stared: body.isStared === "true",
   };
   if(Data && Data?.title)(setNote(Data as TNote));
-  return redirect("/");
+  return redirect("/dashboard");
 };
 
 export default function NewNote() {

@@ -1,7 +1,8 @@
-import { Sequelize,DataTypes,Model } from "sequelize";
+import {DataTypes,Model } from "sequelize";
 import sequelize from "../db.server";
+import { TNote } from "~/Types/Note";
 
-export class Notes extends Model {}
+export class Notes extends Model<TNote> {}
     Notes.init({
       id: {
         type: DataTypes.UUID,
@@ -13,6 +14,10 @@ export class Notes extends Model {}
       },
       body: {
         type: DataTypes.TEXT,
+      },
+      stared: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
       },
       created_at: {
         type: DataTypes.DATE,
