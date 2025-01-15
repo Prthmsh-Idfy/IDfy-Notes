@@ -15,7 +15,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function DashBoard() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || ""
+  );
   const { notes } = useLoaderData<typeof loader>();
 
   const updateSearchParams = useCallback(
@@ -71,9 +73,9 @@ export default function DashBoard() {
           />
         </div>
       </nav>
-      <div className="flex items-start justify-start min-h-screen w-[100%] p-2">
-        <ul className="flex flex-col p-2 bg-white shadow rounded-lg h-[90vh] w-[20%]">
-          <div className="flex justify-between w-full h-8">
+      <div className="flex flex-col sm:flex-row items-start justify-start min-h-screen w-[100%] p-2 gap-2">
+        <div className="flex flex-col p-2 bg-white shadow rounded-lg h-max w-[100%] sm:w-[20%] mb-2">
+          <div className="flex justify-between w-full h-[100%]">
             <Link
               to={"/newNote"}
               className="p-1 items-center justify-center text-sm text-white bg-blue-500 rounded-lg text-center"
@@ -81,21 +83,24 @@ export default function DashBoard() {
               Add Note
             </Link>
           </div>
-          <br />
-          {notes &&
-            notes.map((note: TNote) => (
-              <li key={note.id}>
-                <h3 className="text-lg font-normal text-slate-900 border-b-[slate-100] border-b-2 pt-1">
-                  {note.title}
-                </h3>
-              </li>
-            ))}
-        </ul>
-        <div></div>
-        <div className="grid grid-cols-1 gap-4 pl-4 pr-4 md:grid-cols-2 lg:grid-cols-3 w-[80%]">
+
+          <ul className="hidden sm:flex flex-col p-2 bg-white shadow rounded-lg h-screen w-[100%]" >
+            
+              {notes &&
+                notes.map((note: TNote) => (
+                  <li key={note.id}>
+                    <h3 className="text-lg font-normal text-slate-900 border-b-[slate-100] border-b-2 pt-1">
+                      {note.title}
+                    </h3>
+                  </li>
+                ))}
+            
+          </ul>
+        </div>
+        <div className="grid grid-cols-1 gap-4  md:grid-cols-2 lg:grid-cols-3 w-[100%]">
           {notes.map((note: TNote) => (
             <Link to={`/notes/${note.id}/edit`} key={note.id}>
-              <NoteCard key={note.id} note={note} />
+              <NoteCard key={note.id} note={note} searchQuery={searchQuery} />
             </Link>
           ))}
         </div>

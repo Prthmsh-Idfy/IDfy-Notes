@@ -1,16 +1,12 @@
-import { json, type MetaFunction } from "@remix-run/node";
-import NoteCard from "~/components/NoteCard";
-import { getNotes } from "~/sequelize/data";
-import SearchIcon from "~/public/icons8-search.svg";
+import {type MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
     { title: "Idfy Notes" },
-    { name: "description", content: "Notes App" },
+    { name: "Notes", content: "Notes App" },
   ];
 };
 
-import DashBorad from "~/routes/dashboard";
 import { Link } from "@remix-run/react";
 
 export default function Index() {

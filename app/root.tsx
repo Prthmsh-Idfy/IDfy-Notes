@@ -43,3 +43,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+export function ErrorBoundary({error}:{error:Error}){
+  console.error(error);
+  return(
+    <div title="Uh-No!!!">
+      <h1>
+        App Error
+      </h1>
+      <pre>
+        {error.message}
+      </pre>  
+      <p>
+        this is because there was error in application
+      </p>
+    </div>
+  )
+}
