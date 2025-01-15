@@ -1,6 +1,6 @@
-import { Note } from "~/Types/Note";
+import { TNote } from "~/Types/Note";
 
-export default function NoteCard({ note }: { note: Note }) {
+export default function NoteCard({ note }: { note: TNote }) {
   return (
     <div className="p-4 bg-white shadow rounded-lg">
       <h2 className="text-lg font-semibold text-slate-900">{note.title}</h2>
