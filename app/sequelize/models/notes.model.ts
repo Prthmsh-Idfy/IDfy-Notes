@@ -8,6 +8,10 @@ export class Notes extends Model<TNote> {}
         type: DataTypes.UUID,
         primaryKey: true,
       },
+      userid:{
+        type:DataTypes.STRING,
+        allowNull:false
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,4 +36,6 @@ export class Notes extends Model<TNote> {}
       tableName: 'notes',
       timestamps: false,
     });
-// export default Notes;
+await Notes.sync().then(() => {
+    console.log("Notes Sync Successfull!");
+});

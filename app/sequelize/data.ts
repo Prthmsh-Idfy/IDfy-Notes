@@ -3,11 +3,12 @@ import { Op } from "sequelize";
 import {Notes} from "./models/notes.model";
 
 // Get all notes
-export async function getNotes(query: string): Promise<TNote[]> {
+export async function getNotes(userid:string,query: string): Promise<TNote[]> {
     if (query) {
       // Search for notes that match the query in the title or body
       const notes = await Notes.findAll({
         where: {
+            userid:userid,
           [Op.or]: [
             { title: { [Op.iLike]: `%${query}%` } },
             { body: { [Op.iLike]: `%${query}%` } },
@@ -18,7 +19,13 @@ export async function getNotes(query: string): Promise<TNote[]> {
     }
 
     // Return all notes if no query is provided
-    const notes = await Notes.findAll();
+    const notes = await Notes.findAll(
+        {
+            where:{
+                userid
+            }
+        }
+    );
     return notes.map(note => note.toJSON() as TNote);
   }
 
