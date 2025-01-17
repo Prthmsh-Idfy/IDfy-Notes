@@ -9,7 +9,6 @@ export const meta: MetaFunction = () => {
 export const loader: LoaderFunction = async ({ request }) => {
 
   const user = await getSessionUser(request);
-  console.log(user)
   return { user };
 };
 
@@ -19,7 +18,6 @@ import { getSessionUser } from "~/services/session.server";
 export default function Index() {
    const navigate = useNavigate();
    const { user } = useLoaderData<typeof loader>();
-   console.log(user)
 
   const handleGetStarted = ()=>{
     const isLoggedIn = Boolean(user)

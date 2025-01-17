@@ -28,7 +28,6 @@ export const action = async ({ params,request }: ActionFunctionArgs) => {
     updated_at: new Date(),
     stared: body.isStared === "true",
   };
-  console.log(intent);
 
   switch (intent) {
     case "update":
