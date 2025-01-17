@@ -5,7 +5,6 @@ import { destroySession, destroySessionandClearCookie, getSession } from '~/serv
 export const action = async ({ request }: ActionFunctionArgs) => {
   const session = await getSession(request.headers.get("Cookie") || "");
 
-  console.log(session.data)
   return new Response(
     JSON.stringify({success:true}),
     {

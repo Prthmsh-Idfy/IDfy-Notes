@@ -9,7 +9,6 @@ import { Dialog } from "@reach/dialog";
 import { getSessionUser } from "~/services/session.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  console.log(request);
   const formData = await request.formData();
   const body = Object.fromEntries(formData);
   const user = await getSessionUser(request)

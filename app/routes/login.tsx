@@ -39,7 +39,7 @@ export async function action({ request }: ActionFunctionArgs) {
       return redirect("/dashboard", { headers });
     } else {
       const user = await authenticator.authenticate("user-pass", request);
-      console.log(user)
+
 
       if(user===null){
         return redirect('/login?error=invalid_credentials')
