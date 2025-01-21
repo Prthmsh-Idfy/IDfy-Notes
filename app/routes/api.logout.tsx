@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, redirect } from '@remix-run/node';
-import { destroySession, destroySessionandClearCookie, getSession } from '~/services/session.server';
+import { destroySession,getSession } from '~/services/session.server';
 
 // Define the action function for handling POST requests
 export const action = async ({ request }: ActionFunctionArgs) => {

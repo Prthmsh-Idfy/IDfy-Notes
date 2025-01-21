@@ -6,4 +6,5 @@ export type TNote={
     created_at:Date;
     updated_at?:Date;
     stared:boolean;
+    status:string
 }

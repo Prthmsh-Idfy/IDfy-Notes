@@ -1,10 +1,13 @@
 import { getHighlightedText } from "~/common/getHighlightedText";
+import { updateNote } from "~/sequelize/data";
 import { TNote } from "~/Types/Note";
 
-export default function NoteCard({ note,searchQuery }: { note: TNote ,searchQuery:string}) {
+export default function NoteCard({ note,searchQuery,onDragStart}: { note: TNote ,searchQuery:string,onDragStart:any}) {
   return (
     <div className="p-4 bg-white shadow rounded-lg"
     draggable="true"
+    onDragStart={(e)=>onDragStart(e,note.id)}
+    onDragOver={()=>{}}
     >
       <h2 className="text-lg font-semibold text-slate-900">{getHighlightedText(note.title,searchQuery)}</h2>
       <p className="text-gray-500">{getHighlightedText(note.body|| "",searchQuery)}</p>
