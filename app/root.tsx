@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
+
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
@@ -16,6 +17,11 @@ export const links: LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
+  {
+    rel:"stylesheet",
+    href:"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  }
+  ,
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
@@ -44,19 +50,4 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({error}:{error:Error}){
-  console.error(error);
-  return(
-    <div title="Uh-No!!!">
-      <h1>
-        App Error
-      </h1>
-      <pre>
-        {error.message}
-      </pre>  
-      <p>
-        this is because there was error in application
-      </p>
-    </div>
-  )
-}
+
